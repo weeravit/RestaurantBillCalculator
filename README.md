@@ -7,6 +7,9 @@ This project is calculate buffet price and reduce the price from the promotion.
 npm install
 npm run dev
 ```
+```bash
+Open http://localhost:3000 with browser
+```
 
 ## Thank these dependencies for help me to make this project
 
