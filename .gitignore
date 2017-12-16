@@ -16,3 +16,9 @@ coverage
 # test output
 test/**/out
 .DS_Store
+
+# JetBrains
+.idea/workspace.xml
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries

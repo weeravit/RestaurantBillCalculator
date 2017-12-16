@@ -1,0 +1,3 @@
+export default {
+    CHECKOUT_CALCULATE: 'CHECKOUT_CALCULATE'
+}
