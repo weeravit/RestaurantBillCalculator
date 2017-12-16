@@ -1,1 +1,7 @@
-export default () => <div>Welcome to next.js!</div>
+import MainLayout from '../src/components/common/MainLayout'
+
+export default () => (
+    <MainLayout>
+        <div>Welcome to next.js!</div>
+    </MainLayout>
+);
