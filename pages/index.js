@@ -17,7 +17,7 @@ class IndexPage extends React.Component {
         const {maximumSeat} = this.props.index
 
         for (let seat = 1; seat <= maximumSeat; seat++) {
-            options.push(<option value={seat}>{seat}</option>)
+            options.push(<option key={seat} value={seat}>{seat}</option>)
         }
 
         return (
