@@ -2,22 +2,22 @@ import MainLayout from '../src/component/common/MainLayout'
 
 export default () => (
     <MainLayout>
-        <section class="hero is-fullheight">
-            <div class="hero-body">
-                <div class="container has-text-centered">
-                    <h1 class="title">
+        <section className="hero is-fullheight">
+            <div className="hero-body">
+                <div className="container has-text-centered">
+                    <h1 className="title">
                         Welcome to Buffet Restaurant
                     </h1>
 
                     <br/>
 
-                    <p class="subtitle">
-                        How many people will come ?
+                    <p className="subtitle">
+                        How many people will come?
                     </p>
 
-                    <div class="field is-grouped is-grouped-centered">
-                        <div class="control">
-                            <div class="select is-medium">
+                    <div className="field is-grouped is-grouped-centered">
+                        <div className="control">
+                            <div className="select is-medium">
                                 <select>
                                     <option>Select dropdown</option>
                                     <option>With options</option>
@@ -28,7 +28,7 @@ export default () => (
 
                     <br/>
 
-                    <a class="button is-success is-medium">Confirm</a>
+                    <a className="button is-success is-medium">Confirm</a>
                 </div>
             </div>
         </section>
