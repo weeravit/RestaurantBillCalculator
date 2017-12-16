@@ -1,29 +1,49 @@
+import React from 'react'
+import * as actions from "../src/containers/checkout/actions";
+import withRedux from "next-redux-wrapper";
+import reduxStore from "../src/reduxStore";
+import {bindActionCreators} from "redux";
+
 import MainLayout from "../src/components/common/MainLayout";
 import Link from 'next/link'
 
-const logs = (props) => {
-    console.log(props.url.query.totalPeople)
+// console.log(props.url.query.totalPeople)
+
+class CheckoutPage extends React.Component {
+
+    render() {
+        return (
+            <MainLayout>
+                <section className="hero is-fullheight">
+                    <div className="hero-body">
+                        <div className="container has-text-centered">
+                            <h1 className="title">
+                                Thank you customers for using the service ^o^
+                            </h1>
+
+                            <br/>
+
+                            <Link href='/index' replace>
+                                <a className="button is-primary is-medium">
+                                    Go to Main Page
+                                </a>
+                            </Link>
+                        </div>
+                    </div>
+                </section>
+            </MainLayout>
+        )
+    }
 }
 
-export default (props) => (
-    <MainLayout>
-        {logs(props)}
-        <section className="hero is-fullheight">
-            <div className="hero-body">
-                <div className="container has-text-centered">
-                    <h1 className="title">
-                        Thank you customers for using the service ^o^
-                    </h1>
+const mapStateToProps = ({checkout}) => {
+    return {checkout};
+};
 
-                    <br/>
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators(actions, dispatch)
+    }
+};
 
-                    <Link href='/index' replace>
-                        <a className="button is-primary is-medium">
-                            Go to Main Page
-                        </a>
-                    </Link>
-                </div>
-            </div>
-        </section>
-    </MainLayout>
-)
+export default withRedux(reduxStore, mapStateToProps, mapDispatchToProps)(CheckoutPage);
