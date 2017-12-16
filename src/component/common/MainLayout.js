@@ -12,7 +12,7 @@ export default (props) => (
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css"/>
         </Head>
 
-        <div class="container">
+        <div>
             {props.children}
         </div>
     </div>
