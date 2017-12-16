@@ -1,5 +1,6 @@
 import React from 'react'
 import * as actions from "../src/containers/checkout/actions";
+import * as NumberFormatter from '../src/helper/NumberFormatter'
 import withRedux from "next-redux-wrapper";
 import reduxStore from "../src/reduxStore";
 import {bindActionCreators} from "redux";
@@ -20,8 +21,7 @@ class CheckoutPage extends React.Component {
         const renderPromotions = promotions.map(promotion => {
             return (
                 <tr key={promotion.name}>
-                    <td>{promotion.description}</td>
-                    <td></td>
+                    <td colSpan={2}>{promotion.description}</td>
                 </tr>
             )
         })
@@ -32,15 +32,15 @@ class CheckoutPage extends React.Component {
                 {renderPromotions}
                 <tr>
                     <td>Total Price</td>
-                    <td>{totalPriceWithoutDiscount} Baht</td>
+                    <td>{NumberFormatter.format(totalPriceWithoutDiscount)} ฿</td>
                 </tr>
                 <tr>
                     <td>Discount</td>
-                    <td>{discountPrice} Baht</td>
+                    <td>{NumberFormatter.format(discountPrice)} ฿</td>
                 </tr>
                 <tr>
                     <td>Total Price with Discount</td>
-                    <td>{totalPriceWithDiscount} Baht</td>
+                    <td>{NumberFormatter.format(totalPriceWithDiscount)} ฿</td>
                 </tr>
                 </tbody>
             </table>
