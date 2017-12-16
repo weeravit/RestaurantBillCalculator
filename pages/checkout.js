@@ -16,11 +16,20 @@ class CheckoutPage extends React.Component {
     }
 
     renderPrice() {
-        const { totalPriceWithoutDiscount, totalPriceWithDiscount, discountPrice } = this.props.checkout
+        const { totalPriceWithoutDiscount, totalPriceWithDiscount, discountPrice, promotions } = this.props.checkout
+        const renderPromotions = promotions.map(promotion => {
+            return (
+                <tr>
+                    <td>{promotion.description}</td>
+                    <td></td>
+                </tr>
+            )
+        })
 
         return (
             <table class="table">
                 <tbody>
+                {renderPromotions}
                 <tr>
                     <td>Total Price</td>
                     <td>{totalPriceWithoutDiscount} Baht</td>
