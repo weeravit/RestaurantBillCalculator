@@ -1,5 +1,6 @@
 import Constants from './constants'
 import Config from '../../config'
+import * as Promotions from '../../helper/Promotions'
 
 export const calculate = (totalPeople) => {
     return (dispatch) => {
@@ -10,24 +11,23 @@ export const calculate = (totalPeople) => {
         let totalPriceWithDiscount = 0
         const totalPriceWithoutDiscount = Config.pricePerPerson * totalPeople
 
-        if (totalPeople >= 4) {
-            const discount = Math.floor(totalPeople / 4) * Config.pricePerPerson
-            discountPercent += (discount * 100) / totalPriceWithoutDiscount
+        if (Promotions.isCome4Pay3(totalPeople)) {
+            discountPercent += Promotions.getCome4Pay3DiscountPercent(totalPeople)
             promotions.push(Config.promotions.COME4PAY3)
         }
 
-        if (totalPriceWithoutDiscount >= 1000) {
-            discountPercent += 15
+        if (Promotions.isDiscount15Percent(totalPeople)) {
+            discountPercent += Promotions.getDiscount15Percent()
             promotions.push(Config.promotions.DC15PERCENT)
         }
 
-        if (totalPeople === 2) {
-            discountPercent += 20
+        if (Promotions.isDiscount20Percent(totalPeople)) {
+            discountPercent += Promotions.getDiscount20Percent()
             promotions.push(Config.promotions.DC20PERCENT)
         }
 
-        if (totalPriceWithoutDiscount >= 6000) {
-            discountPercent = 25
+        if (Promotions.isDiscount25Percent(totalPeople)) {
+            discountPercent = Promotions.getDiscount25Percent()
             promotions = []
             promotions.push(Config.promotions.DC25PERCENT)
         }
