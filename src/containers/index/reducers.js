@@ -1,7 +1,8 @@
 import Constants from './constants'
+import Config from '../../config'
 
 const INITIAL_STATE = {
-    maximumSeat: 60,
+    maximumSeat: Config.maximumSeat,
     totalPeople: 1
 }
 
