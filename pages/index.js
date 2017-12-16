@@ -34,7 +34,7 @@ class IndexPage extends React.Component {
     renderConfirmButton() {
         return (
             <Link href={{
-                pathname: '/promotion',
+                pathname: '/checkout',
                 query: {
                     totalPeople: this.props.index.totalPeople
                 }
