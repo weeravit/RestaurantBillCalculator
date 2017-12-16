@@ -1,8 +1,9 @@
 import Constants from './constants'
 
 const INITIAL_STATE = {
-    totalPrice: 0,
-    totalDiscountPrice: 0,
+    totalPriceWithoutDiscount: 0,
+    totalPriceWithDiscount: 0,
+    discountPrice: 0,
     promotions: []
 }
 
