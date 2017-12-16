@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux'
 import withRedux from 'next-redux-wrapper'
 import reduxStore from '../src/reduxStore'
 import * as actions from '../src/containers/index/actions'
+import Config from '../src/config'
 
 class IndexPage extends React.Component {
 
@@ -57,7 +58,11 @@ class IndexPage extends React.Component {
                             <br/>
 
                             <p className="subtitle">
-                                How many people will come?
+                                {Config.pricePerPerson}฿ / Person
+                            </p>
+
+                            <p className="subtitle">
+                                How many person will come?
                             </p>
 
                             {this.renderSeats()}
