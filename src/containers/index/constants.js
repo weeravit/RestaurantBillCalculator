@@ -1,0 +1,3 @@
+export default {
+    INDEX_TOTAL_PEOPLE_CHANGED: 'INDEX_TOTAL_PEOPLE_CHANGED',
+}

@@ -1,52 +1,93 @@
-import MainLayout from '../src/component/common/MainLayout'
+import React from 'react'
+import MainLayout from '../src/components/common/MainLayout'
 import Link from 'next/link'
+import {bindActionCreators} from 'redux'
+import withRedux from 'next-redux-wrapper'
+import reduxStore from '../src/reduxStore'
+import * as actions from '../src/containers/index/actions'
 
-const getSeats = (maximum = 60) => {
-    let options = [];
+class IndexPage extends React.Component {
 
-    for (let seat = 1; seat <= maximum; seat++) {
-        options.push(<option value={seat}>{seat}</option>)
+    onTotalPeopleChanged = ({target: {value}}) => {
+        this.props.actions.totalPeopleChanged(value)
     }
 
-    return options
-}
+    renderSeats() {
+        const options = [];
+        const {maximumSeat} = this.props.index
 
-export default () => (
-    <MainLayout>
-        <section className="hero is-fullheight">
-            <div className="hero-body">
-                <div className="container has-text-centered">
-                    <h1 className="title">
-                        Welcome to Buffet Restaurant
-                    </h1>
+        for (let seat = 1; seat <= maximumSeat; seat++) {
+            options.push(<option value={seat}>{seat}</option>)
+        }
 
-                    <br/>
+        return (
+            <div className="field is-grouped is-grouped-centered">
+                <div className="control">
+                    <div className="select is-medium">
+                        <select onChange={this.onTotalPeopleChanged}>{options}</select>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 
-                    <p className="subtitle">
-                        How many people will come?
-                    </p>
+    renderConfirmButton() {
+        return (
+            <Link href={{
+                pathname: '/promotion',
+                query: {
+                    totalPeople: this.props.index.totalPeople
+                }
+            }}>
+                <a className="button is-success is-medium">Confirm</a>
+            </Link>
+        )
+    }
 
-                    <div className="field is-grouped is-grouped-centered">
-                        <div className="control">
-                            <div className="select is-medium">
-                                <select>{getSeats()}</select>
-                            </div>
+    render() {
+        return (
+            <MainLayout>
+                <section className="hero is-fullheight">
+                    <div className="hero-body">
+                        <div className="container has-text-centered">
+                            <h1 className="title">
+                                Welcome to Buffet Restaurant
+                            </h1>
+
+                            <br/>
+
+                            <p className="subtitle">
+                                How many people will come?
+                            </p>
+
+                            {this.renderSeats()}
+
+                            <br/>
+
+                            {this.renderConfirmButton()}
                         </div>
                     </div>
 
-                    <br/>
+                    <div className="hero-foot">
+                        <div className="container has-text-centered">
+                            <h1 className="title">*** This program will calculate discount itself without fill coupon
+                                code ***</h1>
+                        </div>
+                    </div>
+                </section>
+            </MainLayout>
+        )
+    }
+}
 
-                    <Link href={{pathname: '/promotion', query: {totalPeople: 6}}}>
-                        <a className="button is-success is-medium">Confirm</a>
-                    </Link>
-                </div>
-            </div>
+const mapStateToProps = ({index}) => {
+    return {index};
+};
 
-            <div className="hero-foot">
-                <div className="container has-text-centered">
-                    <h1 className="title">*** This program will calculate discount itself without fill coupon code ***</h1>
-                </div>
-            </div>
-        </section>
-    </MainLayout>
-);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators(actions, dispatch)
+    }
+};
+
+export default withRedux(reduxStore, mapStateToProps, mapDispatchToProps)(IndexPage);
