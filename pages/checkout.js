@@ -19,7 +19,7 @@ class CheckoutPage extends React.Component {
         const { totalPriceWithoutDiscount, totalPriceWithDiscount, discountPrice, promotions } = this.props.checkout
         const renderPromotions = promotions.map(promotion => {
             return (
-                <tr>
+                <tr key={promotion.name}>
                     <td>{promotion.description}</td>
                     <td></td>
                 </tr>
@@ -27,7 +27,7 @@ class CheckoutPage extends React.Component {
         })
 
         return (
-            <table class="table">
+            <table className="table">
                 <tbody>
                 {renderPromotions}
                 <tr>
@@ -59,9 +59,9 @@ class CheckoutPage extends React.Component {
 
                             <br/>
 
-                            <div class="columns">
-                                <div class="column"/>
-                                <div class="column is-half">
+                            <div className="columns">
+                                <div className="column"/>
+                                <div className="column is-half">
                                     <div className="card">
                                         <header className="card-header">
                                             <p className="card-header-title">
@@ -75,7 +75,7 @@ class CheckoutPage extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="column"/>
+                                <div className="column"/>
                             </div>
 
                             <br/>

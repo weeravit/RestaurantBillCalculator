@@ -14,7 +14,7 @@ class IndexPage extends React.Component {
 
     renderSeats() {
         const options = [];
-        const {maximumSeat} = this.props.index
+        const {maximumSeat, totalPeople} = this.props.index
 
         for (let seat = 1; seat <= maximumSeat; seat++) {
             options.push(<option key={seat} value={seat}>{seat}</option>)
@@ -24,7 +24,7 @@ class IndexPage extends React.Component {
             <div className="field is-grouped is-grouped-centered">
                 <div className="control">
                     <div className="select is-medium">
-                        <select onChange={this.onTotalPeopleChanged}>{options}</select>
+                        <select defaultValue={totalPeople} onChange={this.onTotalPeopleChanged}>{options}</select>
                     </div>
                 </div>
             </div>

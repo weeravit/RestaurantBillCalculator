@@ -3,6 +3,7 @@ import Config from '../../config'
 
 export const calculate = (totalPeople) => {
     return (dispatch) => {
+        totalPeople = Number(totalPeople)
         let promotions = []
         let discountPercent = 0
         let discountPrice = 0
